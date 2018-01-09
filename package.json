@@ -27,11 +27,11 @@
   },
   "main": "cli/index.js",
   "bin": {
-    "jhipster": "./cli/jhipster.js"
+    "springcloud": "./cli/jhipster.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jhipster/generator-jhipster.git"
+    "url": "git://github.com/bxyb214/generator-springcloud.git"
   },
   "scripts": {
     "completion": "tabtab install --name jhipster --auto",

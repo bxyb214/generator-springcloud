@@ -65,7 +65,7 @@ function requireCLI(preferLocal) {
         }
     }
     // load global version
-    logger.info('Using JHipster version installed globally');
+    logger.info('使用全局安装的Spring Cloud版本');
     require('./cli');
     /* eslint-enable  */
 }

@@ -45,7 +45,7 @@ Object.keys(SUB_GENERATORS).forEach((generator) => {
 });
 
 const done = () => {
-    logger.info(chalk.green.bold('Congratulations, JHipster execution is complete!'));
+    logger.info(chalk.green.bold('恭喜，SpringCloud执行完毕！'));
 };
 
 /**
@@ -57,8 +57,8 @@ const runYoCommand = (cmd, args, opts) => {
     logger.debug(`opts: ${toString(opts)}`);
     const command = getCommand(cmd, args, opts);
     const options = getCommandOptions(packageJson, process.argv.slice(2));
-    logger.info(chalk.yellow(`Executing ${command}`));
-    logger.info(chalk.yellow(`Options: ${toString(options)}`));
+    logger.info(chalk.yellow(`执行 ${command}`));
+    logger.info(chalk.yellow(`参数: ${toString(options)}`));
     try {
         env.run(command, options, done);
     } catch (e) {

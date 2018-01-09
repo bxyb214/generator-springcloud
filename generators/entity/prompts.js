@@ -445,7 +445,7 @@ function askForPagination() {
     }
     this.prompt(prompts).then((props) => {
         context.pagination = props.pagination;
-        this.log(chalk.green('\nEverything is configured, generating the entity...\n'));
+        this.log(chalk.green('\n一切都被配置好，生成entity...\n'));
         done();
     });
 }
@@ -455,7 +455,7 @@ function askForPagination() {
  */
 function askForField(done) {
     const context = this.context;
-    this.log(chalk.green(`\nGenerating field #${context.fields.length + 1}\n`));
+    this.log(chalk.green(`\n生成字段 #${context.fields.length + 1}\n`));
     const skipServer = context.skipServer;
     const prodDatabaseType = context.prodDatabaseType;
     const databaseType = context.databaseType;
@@ -464,7 +464,7 @@ function askForField(done) {
         {
             type: 'confirm',
             name: 'fieldAdd',
-            message: 'Do you want to add a field to your entity?',
+            message: '添加一个字段到实体？',
             default: true
         },
         {
@@ -473,27 +473,27 @@ function askForField(done) {
             name: 'fieldName',
             validate: (input) => {
                 if (!(/^([a-zA-Z0-9_]*)$/.test(input))) {
-                    return 'Your field name cannot contain special characters';
+                    return '字段名称不能包含特殊字符';
                 } else if (input === '') {
-                    return 'Your field name cannot be empty';
+                    return '您的字段名称不能为空';
                 } else if (input.charAt(0) === input.charAt(0).toUpperCase()) {
-                    return 'Your field name cannot start with an upper case letter';
+                    return '字段名称不能以大写字母开头';
                 } else if (input === 'id' || fieldNamesUnderscored.includes(_.snakeCase(input))) {
-                    return 'Your field name cannot use an already existing field name';
+                    return '字段名称不能使用已经存在的字段名称';
                 } else if (!skipServer && jhiCore.isReservedFieldName(input)) {
-                    return 'Your field name cannot contain a Java or Angular reserved keyword';
+                    return '字段名称不能包含Java或Angular保留的关键字';
                 } else if (prodDatabaseType === 'oracle' && input.length > 30) {
-                    return 'The field name cannot be of more than 30 characters';
+                    return '字段名称不能超过30个字符';
                 }
                 return true;
             },
-            message: 'What is the name of your field?'
+            message: '字段名字是?'
         },
         {
             when: response => response.fieldAdd === true && (skipServer || ['sql', 'mongodb', 'couchbase'].includes(databaseType)),
             type: 'list',
             name: 'fieldType',
-            message: 'What is the type of your field?',
+            message: '字段类型是?',
             choices: [
                 {
                     value: 'String',
@@ -559,9 +559,9 @@ function askForField(done) {
             name: 'fieldType',
             validate: (input) => {
                 if (input === '') {
-                    return 'Your class name cannot be empty.';
+                    return 'Class名称不能为空.';
                 } else if (jhiCore.isReservedKeyword(input, 'JAVA')) {
-                    return 'Your enum name cannot contain a Java reserved keyword';
+                    return '枚举名称不能包含Java保留关键字';
                 }
                 if (context.enums.includes(input)) {
                     context.existingEnum = true;
@@ -570,7 +570,7 @@ function askForField(done) {
                 }
                 return true;
             },
-            message: 'What is the class name of your enumeration?'
+            message: '枚举的Class名称?'
         },
         {
             when: response => response.fieldIsEnum,

@@ -2098,44 +2098,36 @@ module.exports = class extends PrivateBase {
      */
     printJHipsterLogo() {
         this.log('\n');
-        this.log(`${chalk.green('        ██╗')}${chalk.red(' ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗')}`);
-        this.log(`${chalk.green('        ██║')}${chalk.red(' ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗')}`);
-        this.log(`${chalk.green('        ██║')}${chalk.red(' ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝')}`);
-        this.log(`${chalk.green('  ██╗   ██║')}${chalk.red(' ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║')}`);
-        this.log(`${chalk.green('  ╚██████╔╝')}${chalk.red(' ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗')}`);
-        this.log(`${chalk.green('   ╚═════╝ ')}${chalk.red(' ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝')}\n`);
-        this.log(chalk.white.bold('                            http://www.jhipster.tech\n'));
-        this.log(chalk.white('Welcome to the JHipster Generator ') + chalk.yellow(`v${packagejs.version}`));
-        this.log(chalk.green(' _______________________________________________________________________________________________________________\n'));
-        this.log(chalk.white(`  If you find JHipster useful consider supporting our collective ${chalk.yellow('https://opencollective.com/generator-jhipster')}`));
-        this.log(chalk.white(`  Documentation for creating an application: ${chalk.yellow('http://www.jhipster.tech/creating-an-app/')}`));
+        this.log(chalk.white.bold('                            http://www.songzi.tech\n'));
+        this.log(chalk.white('Welcome to the Springcloud Generator ') + chalk.yellow(`v${packagejs.version}`));
         this.log(chalk.green(' _______________________________________________________________________________________________________________\n'));
         this.log(chalk.white(`Application files will be generated in folder: ${chalk.yellow(process.cwd())}`));
     }
 
     /**
      * Checks if there is a newer JHipster version available.
+     * remove by Yan
      */
     checkForNewVersion() {
-        try {
-            const done = this.async();
-            shelljs.exec(`npm show ${GENERATOR_JHIPSTER} version`, { silent: true }, (code, stdout, stderr) => {
-                if (!stderr && semver.lt(packagejs.version, stdout)) {
-                    this.log(`${chalk.yellow(' ______________________________________________________________________________\n\n') +
-                        chalk.yellow('  JHipster update available: ') + chalk.green.bold(stdout.replace('\n', '')) + chalk.gray(` (current: ${packagejs.version})`)}\n`);
-                    if (this.useYarn) {
-                        this.log(chalk.yellow(`  Run ${chalk.magenta(`yarn global upgrade ${GENERATOR_JHIPSTER}`)} to update.\n`));
-                    } else {
-                        this.log(chalk.yellow(`  Run ${chalk.magenta(`npm install -g ${GENERATOR_JHIPSTER}`)} to update.\n`));
-                    }
-                    this.log(chalk.yellow(' ______________________________________________________________________________\n'));
-                }
-                done();
-            });
-        } catch (err) {
-            this.debug('Error:', err);
-            // fail silently as this function doesn't affect normal generator flow
-        }
+        // try {
+        //     const done = this.async();
+        //     shelljs.exec(`npm show ${GENERATOR_JHIPSTER} version`, { silent: true }, (code, stdout, stderr) => {
+        //         if (!stderr && semver.lt(packagejs.version, stdout)) {
+        //             this.log(`${chalk.yellow(' ______________________________________________________________________________\n\n') +
+        //                 chalk.yellow('  JHipster update available: ') + chalk.green.bold(stdout.replace('\n', '')) + chalk.gray(` (current: ${packagejs.version})`)}\n`);
+        //             if (this.useYarn) {
+        //                 this.log(chalk.yellow(`  Run ${chalk.magenta(`yarn global upgrade ${GENERATOR_JHIPSTER}`)} to update.\n`));
+        //             } else {
+        //                 this.log(chalk.yellow(`  Run ${chalk.magenta(`npm install -g ${GENERATOR_JHIPSTER}`)} to update.\n`));
+        //             }
+        //             this.log(chalk.yellow(' ______________________________________________________________________________\n'));
+        //         }
+        //         done();
+        //     });
+        // } catch (err) {
+        //     this.debug('Error:', err);
+        //     // fail silently as this function doesn't affect normal generator flow
+        // }
     }
 
     /**

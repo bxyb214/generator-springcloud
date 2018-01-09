@@ -202,7 +202,7 @@ module.exports = class extends BaseGenerator {
                 // Specific Entity sub-generator constants
                 if (!context.useConfigurationFile) {
                     // no file present, new entity creation
-                    this.log(`\nThe entity ${entityName} is being created.\n`);
+                    this.log(`\nEntity ${entityName} 正在创建.\n`);
                     context.fields = [];
                     context.relationships = [];
                     context.pagination = 'no';
@@ -212,7 +212,7 @@ module.exports = class extends BaseGenerator {
                     context.jpaMetamodelFiltering = false;
                 } else {
                     // existing entity reading values from file
-                    this.log(`\nThe entity ${entityName} is being updated.\n`);
+                    this.log(`\nEntity ${entityName} 正在更新.\n`);
                     this.loadEntityJson();
                 }
             },
@@ -223,16 +223,16 @@ module.exports = class extends BaseGenerator {
                 const entityTableName = context.entityTableName;
                 const jhiTablePrefix = context.jhiTablePrefix;
                 if (!(/^([a-zA-Z0-9_]*)$/.test(entityTableName))) {
-                    this.error(chalk.red('The table name cannot contain special characters'));
+                    this.error(chalk.red('表名不能包含特殊字符'));
                 } else if (entityTableName === '') {
-                    this.error(chalk.red('The table name cannot be empty'));
+                    this.error(chalk.red('表名不能为空'));
                 } else if (jhiCore.isReservedTableName(entityTableName, prodDatabaseType)) {
-                    this.warning(chalk.red(`The table name cannot contain the '${entityTableName.toUpperCase()}' reserved keyword, so it will be prefixed with '${jhiTablePrefix}_'`));
+                    this.warning(chalk.red(`表名不能包含 '${entityTableName.toUpperCase()}' 保留关键字，所以加上前缀 '${jhiTablePrefix}_'`));
                     this.entityTableName = `${jhiTablePrefix}_${entityTableName}`;
                 } else if (prodDatabaseType === 'oracle' && entityTableName.length > 26) {
-                    this.error(chalk.red('The table name is too long for Oracle, try a shorter name'));
+                    this.error(chalk.red('对于Oracle而言，表名太长，请尝试缩短名称'));
                 } else if (prodDatabaseType === 'oracle' && entityTableName.length > 14) {
-                    this.warning('The table name is long for Oracle, long table names can cause issues when used to create constraint names and join table names');
+                    this.warning('对于Oracle而言，表名太长，当用于创建约束名称和连接表名时，长表名可能会导致问题');
                 }
             }
         };
