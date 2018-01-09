@@ -12,4 +12,4 @@ docs
 yarn.lock
 .DS_Store
 .jhipster
-.package-lock.json
+package-lock.json
